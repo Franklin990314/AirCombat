@@ -31,7 +31,7 @@ public class Main extends javax.swing.JFrame {
         initComponentsManually();
         initView();
 
-        EnemyThread enemyThread = new EnemyThread(this, mainPanel, 1000);
+        EnemyThread enemyThread = new EnemyThread(this, mainPanel, 100);
         enemyThread.start();
     }
 

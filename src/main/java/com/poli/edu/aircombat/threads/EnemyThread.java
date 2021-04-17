@@ -41,7 +41,7 @@ public class EnemyThread extends Thread {
             } catch (Exception exc) {
                 System.out.println(exc.getMessage());
             }
-            System.out.println(main.getEnemyFires().size());
+            //System.out.println(main.getEnemyFires().size());
         }
     }
 
