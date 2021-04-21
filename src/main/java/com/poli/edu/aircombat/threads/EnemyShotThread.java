@@ -22,7 +22,7 @@ public class EnemyShotThread extends Thread {
     public void run(){
         while (!enemyFire.isDelete()) {
             if(enemyFire.getX()-1 < 0) break;
-            enemyFire.setLocation(enemyFire.getX()-1, enemyFire.getY_coordinate());
+            enemyFire.setLocation(enemyFire.getX()-1, enemyFire.getPosYEnemy());
 
             try {
                 Thread.sleep(5);
@@ -32,6 +32,7 @@ public class EnemyShotThread extends Thread {
         }
 
         main.getEnemyFires().remove(this.enemyFire);
+        //System.out.println("Long del vector enemigo: "+main.getEnemyFires().size());
         mainPanel.remove((Component) enemyFire);
         mainPanel.repaint();
     }

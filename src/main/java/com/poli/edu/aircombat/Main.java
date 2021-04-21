@@ -5,8 +5,10 @@
  */
 package com.poli.edu.aircombat;
 
+import com.poli.edu.aircombat.components.AirplaneFire;
 import com.poli.edu.aircombat.components.EnemyFire;
 import com.poli.edu.aircombat.components.PaintGif;
+import com.poli.edu.aircombat.threads.AirplaneThread;
 import com.poli.edu.aircombat.threads.EnemyThread;
 
 import java.awt.Dimension;
@@ -23,6 +25,7 @@ public class Main extends javax.swing.JFrame {
     private Dimension screenSize;
     private ImageIcon airplaneImage;
     private Vector<EnemyFire> EnemyFires = new Vector<>();
+    private Vector<AirplaneFire> AirplaneFires = new Vector<>();
     
     public Main() {
         this.setTitle("Air Combat");
@@ -101,6 +104,13 @@ public class Main extends javax.swing.JFrame {
             if (!(airplane.getY() > (screenSize.height - airplaneImage.getIconHeight() - 30))) {
                 airplane.setLocation(airplane.getX(), airplane.getY() + 5);
             }
+        }
+        if (evt.VK_SPACE == evt.getKeyCode()){
+            //AirplaneFire aF = new AirplaneFire(airplane.getY(), screenSize);
+            //add(aF);
+            //AirplaneFires.add(aF);
+            AirplaneThread airplaneThread = new AirplaneThread(this, mainPanel, airplane.getX(), airplane.getY());
+            airplaneThread.start();
         }
     }//GEN-LAST:event_formKeyPressed
 
@@ -219,5 +229,17 @@ public class Main extends javax.swing.JFrame {
 
     public void addEnemyFires(EnemyFire enemyFires) {
         this.EnemyFires.add(enemyFires);
+    }
+
+    public Vector<AirplaneFire> getAirplaneFires() {
+        return AirplaneFires;
+    }
+
+    public void setAirplaneFires(Vector<AirplaneFire> airplaneFires) {
+        AirplaneFires = airplaneFires;
+    }
+
+    public void addAirplaneFires(AirplaneFire airplaneFires) {
+        this.AirplaneFires.add(airplaneFires);
     }
 }
